@@ -15,7 +15,7 @@ import org.xml.sax.SAXException;
 
 public class XmlParser {
 
-	protected static String getValeuFromTagNameAndStringXml(String tagName, String xml) throws ParserConfigurationException, SAXException, IOException {
+	protected static String getValueFromTagNameAndStringXml(String tagName, String xml) throws ParserConfigurationException, SAXException, IOException {
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
