@@ -9,18 +9,8 @@ public class HttpURLConnectionExample {
 
 	private final String USER_AGENT = "Mozilla/5.0";
 
-	public static void main(String[] args) throws Exception {
-
-		HttpURLConnectionExample http = new HttpURLConnectionExample();
-
-		System.out.println("Testing 1 - Send Http GET request");
-		http.sendGet();
-	}
-
 	// HTTP GET request
-	private void sendGet() throws Exception {
-
-		String url = "http://www.goodreads.com/search/index.xml?key=uv1J3LcJ7zGuhzCXwaCcUQ&q=harrypotter";
+	protected String sendGet(String url) throws Exception {
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -45,8 +35,7 @@ public class HttpURLConnectionExample {
 		}
 		in.close();
 
-		//print result
-		System.out.println(response.toString());
-
+		//return result
+		return response.toString();
 	}
 }
