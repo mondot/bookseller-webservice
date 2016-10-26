@@ -11,6 +11,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Color;
 import javax.swing.JSeparator;
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class BookResults extends JFrame {
 
@@ -19,7 +20,7 @@ public class BookResults extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BookResults(String[] results) {
+	public BookResults(String[] results, String offer) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -32,20 +33,35 @@ public class BookResults extends JFrame {
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setEditable(false);
+		
+		JPanel panel_2 = new JPanel();
+		
+		JLabel lblOffer_1 = new JLabel("Offer: <dynamic>");
+		panel_2.add(lblOffer_1);
+		lblOffer_1.setText("The price is " + offer + " $.");
+		
+		JSeparator separator_1 = new JSeparator();
+		panel_2.add(separator_1);
+		
+		JButton lblOffer = new JButton("Buy");
+		panel_2.add(lblOffer);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap(13, Short.MAX_VALUE)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(13)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+								.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
 								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))))
 					.addGap(3))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(16, Short.MAX_VALUE)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -56,7 +72,9 @@ public class BookResults extends JFrame {
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(87, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		
 		JLabel lblTitle = new JLabel("Title");
