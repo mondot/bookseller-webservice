@@ -3,7 +3,11 @@ package client.view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import client.control.BookSellerWebService;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -12,6 +16,8 @@ import java.awt.Color;
 import javax.swing.JSeparator;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BookResults extends JFrame {
 
@@ -43,8 +49,17 @@ public class BookResults extends JFrame {
 		JSeparator separator_1 = new JSeparator();
 		panel_2.add(separator_1);
 		
-		JButton lblOffer = new JButton("Buy");
-		panel_2.add(lblOffer);
+		JButton buyButton = new JButton("Buy");
+		buyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String debitedAccount = JOptionPane.showInputDialog("Payment Process", "Enter your account number");
+				double amount = Double.parseDouble(offer);
+				int correctedAmount = (int) amount;
+				BookSellerWebService.payBook(correctedAmount, debitedAccount);
+			}
+		});
+
+		panel_2.add(buyButton);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)

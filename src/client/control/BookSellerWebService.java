@@ -1,5 +1,9 @@
 package client.control;
 
+import javax.swing.JOptionPane;
+
+import bankingservice.BankingService;
+import bankingservice.BankingServiceImplService;
 import client.view.BookResults;
 
 public class BookSellerWebService {
@@ -12,5 +16,14 @@ public class BookSellerWebService {
 
 		BookResults frame = new BookResults(result, offer);
 		frame.setVisible(true);
+	}
+	
+	public static void payBook(int amount, String debitedAccount) {
+		String creditedAccount = "01234567890";
+		String currency = "USD";
+		BankingServiceImplService bankingServiceImpl = new BankingServiceImplService();  
+    	BankingService bankingService = bankingServiceImpl.getBankingServiceImplPort();
+    	String paymentStatus = bankingService.payment(amount, currency, debitedAccount, creditedAccount);
+    	JOptionPane.showMessageDialog(null, paymentStatus, "Payment Status", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
