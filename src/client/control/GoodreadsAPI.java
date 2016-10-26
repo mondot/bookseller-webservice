@@ -6,18 +6,15 @@ public class GoodreadsAPI {
 
 		HttpURLConnectionExample http = new HttpURLConnectionExample();
 
-		System.out.println("Testing 1 - Send Http GET request");
-		String searchIndexXml = http.sendGet("http://www.goodreads.com/search/index.xml?key=uv1J3LcJ7zGuhzCXwaCcUQ&q="+keyword);
-		System.out.println(searchIndexXml);
-
+		String correctedKeyword = keyword.replaceAll(" ", "%20");
+		String searchIndexXml = http.sendGet("http://www.goodreads.com/search/index.xml?key=uv1J3LcJ7zGuhzCXwaCcUQ&q="+correctedKeyword);
 		String title = XmlParser.getValueFromTagNameAndStringXml("title", searchIndexXml);
 		String averageRating = XmlParser.getValueFromTagNameAndStringXml("average_rating", searchIndexXml);
-		System.out.println(averageRating);
+		System.out.println("The title " + title + " rated "+ averageRating +" have been found.");
 
 		String correctedTitle = title.replaceAll(" ", "%20");
 		String descriptionXml = http.sendGet("http://www.goodreads.com/book/title.xml?key=uv1J3LcJ7zGuhzCXwaCcUQ&title="+correctedTitle);
 		String description = XmlParser.getValueFromTagNameAndStringXml("description", descriptionXml);
-		System.out.println(description);
 
 		String[] response = {title, averageRating, description};
 
