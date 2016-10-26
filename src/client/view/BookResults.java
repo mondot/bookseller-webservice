@@ -52,10 +52,10 @@ public class BookResults extends JFrame {
 		JButton buyButton = new JButton("Buy");
 		buyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String debitedAccount = JOptionPane.showInputDialog("Payment Process", "Enter your account number");
 				double amount = Double.parseDouble(offer);
 				int correctedAmount = (int) amount;
-				BookSellerWebService.payBook(correctedAmount, debitedAccount);
+				setVisible(false);
+				BookSellerWebService.payBook(correctedAmount);
 			}
 		});
 

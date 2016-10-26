@@ -18,12 +18,30 @@ public class BookSellerWebService {
 		frame.setVisible(true);
 	}
 	
-	public static void payBook(int amount, String debitedAccount) {
+	public static void payBook(int amount) {
 		String creditedAccount = "01234567890";
 		String currency = "USD";
-		BankingServiceImplService bankingServiceImpl = new BankingServiceImplService();  
-    	BankingService bankingService = bankingServiceImpl.getBankingServiceImplPort();
-    	String paymentStatus = bankingService.payment(amount, currency, debitedAccount, creditedAccount);
-    	JOptionPane.showMessageDialog(null, paymentStatus, "Payment Status", JOptionPane.INFORMATION_MESSAGE);
+			
+		Object[] options = {"PayPal",
+		                    "Visa"};
+		int choice = JOptionPane.showOptionDialog(null,
+		    "Please choose the payment method",
+		    "Banking Service",
+		    JOptionPane.DEFAULT_OPTION,
+		    JOptionPane.QUESTION_MESSAGE,
+		    null,
+		    options,
+		    options[0]);
+		
+		if (choice == 0) {
+			String debitedAccount = JOptionPane.showInputDialog("Payment Process", "Enter your account number");
+			BankingServiceImplService bankingServiceImpl = new BankingServiceImplService();  
+	    	BankingService bankingService = bankingServiceImpl.getBankingServiceImplPort();
+	    	String paymentStatus = bankingService.payment(amount, currency, debitedAccount, creditedAccount);
+	    	JOptionPane.showMessageDialog(null, paymentStatus, "Payment Status", JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			
+		}
+
 	}
 }
