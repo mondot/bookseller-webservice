@@ -3,7 +3,6 @@ package client.view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +21,7 @@ public class SearchBook extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEnterYourBook;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -47,7 +47,7 @@ public class SearchBook extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BorderLayout(0, 100));
 		setContentPane(contentPane);
 		
 		JLabel lblWelcomeToAalto = new JLabel("Welcome to Aalto Book Seller BETA");
@@ -69,6 +69,7 @@ public class SearchBook extends JFrame {
 		    {
 		        try {
 					BookSellerWebService.searchBook(txtEnterYourBook.getText());
+					setVisible(false);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -77,5 +78,8 @@ public class SearchBook extends JFrame {
 		
 		btnSearch.addActionListener(action);
 		getRootPane().setDefaultButton(btnSearch);
+		
+		panel = new JPanel();
+		contentPane.add(panel, BorderLayout.SOUTH);
 	}
 }
