@@ -4,6 +4,11 @@ public class eBayAPI {
 
 	protected static String getOffersByKeyword(String keyword) throws Exception {
 
+//		FindItemsByKeywordsRequest findItemsByKeywordsRequest = new FindItemsByKeywordsRequest();
+//		findItemsByKeywordsRequest.setKeywords(keyword);		
+//		FindingService findingService = new FindingService();
+//		findingService.getFindingServiceSOAPPort("http://svcs.sandbox.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=AaltoUni-ws-SBX-3e6eb0ea5-11d466dd&OPERATION-NAME=findItemsByKeywords").findItemsByKeywords(findItemsByKeywordsRequest);
+
 		HttpURLConnect http = new HttpURLConnect();
 
 		String correctedKeyword = keyword.replaceAll(" ", "%20");

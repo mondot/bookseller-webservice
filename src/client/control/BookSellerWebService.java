@@ -3,6 +3,7 @@ package client.control;
 import javax.swing.JOptionPane;
 
 import client.view.BookResults;
+import fi.aalto.t_75_5300.bank.TransactionException_Exception;
 
 public class BookSellerWebService {
 
@@ -16,7 +17,7 @@ public class BookSellerWebService {
 		frame.setVisible(true);
 	}
 	
-	public static void payBook(int amount) {
+	public static void payBook(int amount) throws TransactionException_Exception {
 		String creditedAccount = "01234567890";
 		String currency = "USD";
 			

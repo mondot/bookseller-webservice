@@ -17,6 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import client.control.BookSellerWebService;
+import fi.aalto.t_75_5300.bank.TransactionException_Exception;
 
 @SuppressWarnings("serial")
 public class BookResults extends JFrame {
@@ -55,7 +56,11 @@ public class BookResults extends JFrame {
 				double amount = Double.parseDouble(offer);
 				int correctedAmount = (int) amount;
 				setVisible(false);
-				BookSellerWebService.payBook(correctedAmount);
+				try {
+					BookSellerWebService.payBook(correctedAmount);
+				} catch (TransactionException_Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 
