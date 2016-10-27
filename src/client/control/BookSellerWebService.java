@@ -39,26 +39,11 @@ public class BookSellerWebService {
 		    options[0]);
 		
 		if (choice == 0) {
-			String debitedAccount = JOptionPane.showInputDialog("Payment Process", "Enter your account number");
-			BankingServiceImplService bankingServiceImpl = new BankingServiceImplService();  
-	    	BankingService bankingService = bankingServiceImpl.getBankingServiceImplPort();
-	    	String paymentStatus = bankingService.payment(amount, currency, debitedAccount, creditedAccount);
-	    	JOptionPane.showMessageDialog(null, paymentStatus, "Payment Status", JOptionPane.INFORMATION_MESSAGE);
+			BankTransfer bankTransfer = new BankTransfer();
+			bankTransfer.makePayment(amount, currency, creditedAccount);
 		} else {
-			VisaDetails visaDetailsObject = new VisaDetails();
-			String[] visaDetails = visaDetailsObject.visaForm();
-			
-			VisaCard visaCard = new VisaCard();
-			visaCard.setOwner(visaDetails[0]);
-			visaCard.setNumber(visaDetails[1]);
-			visaCard.setCsv(visaDetails[2]);
-			VisaTransaction visaTransaction = new VisaTransaction();
-			visaTransaction.setAmountInCents(amount * 100);
-			visaTransaction.setCard(visaCard);
-			MakeVisaTransaction transaction = new MakeVisaTransaction();
-			transaction.setArg0(visaTransaction);
-	    	JOptionPane.showMessageDialog(null, "The payment has been successful.", "Payment Status", JOptionPane.INFORMATION_MESSAGE);
+			VisaPayment visaPayment = new VisaPayment();
+			visaPayment.makePayment(amount);
 		}
-
 	}
 }

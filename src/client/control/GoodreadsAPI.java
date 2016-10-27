@@ -4,7 +4,7 @@ public class GoodreadsAPI {
 
 	protected static String[] getInformationsByKeyword(String keyword) throws Exception {
 
-		HttpURLConnectionExample http = new HttpURLConnectionExample();
+		HttpURLConnect http = new HttpURLConnect();
 
 		String correctedKeyword = keyword.replaceAll(" ", "%20");
 		String searchIndexXml = http.sendGet("http://www.goodreads.com/search/index.xml?key=uv1J3LcJ7zGuhzCXwaCcUQ&q="+correctedKeyword);
