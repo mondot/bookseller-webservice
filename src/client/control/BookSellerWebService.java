@@ -2,14 +2,7 @@ package client.control;
 
 import javax.swing.JOptionPane;
 
-import bankingservice.BankingService;
-import bankingservice.BankingServiceImplService;
-
-import fi.aalto.t_75_5300.bank.MakeVisaTransaction;
-import fi.aalto.t_75_5300.bank.VisaCard;
-import fi.aalto.t_75_5300.bank.VisaTransaction;
 import client.view.BookResults;
-import client.view.VisaDetails;
 
 public class BookSellerWebService {
 
